@@ -30,8 +30,8 @@ func New(ctx context.Context, host string, port uint, userService service.UserSe
 
 func (s *Server) routes() {
 	s.engine.POST("/user/create", user.CreateHandler(s.userService))
-	s.engine.POST("/user/update", user.UpdateHandler(s.userService))
-	s.engine.GET("/user/delete/:id", user.DeleteHandler(s.userService))
+	s.engine.POST("/user/update", jsonwebtoken.VerifyJWT(), user.UpdateHandler(s.userService))
+	s.engine.GET("/user/delete/:id", jsonwebtoken.VerifyJWT(), user.DeleteHandler(s.userService))
 	s.engine.GET("/user/list", jsonwebtoken.VerifyJWT(), user.ListHandler(s.userService))
 
 	s.engine.POST("/login", user.FindHandler(s.userService))
