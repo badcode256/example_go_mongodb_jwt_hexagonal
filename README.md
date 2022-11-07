@@ -1,4 +1,4 @@
-# example security in goland with mongodb - hexagonal architecture
+# example jwt in goland with mongodb - hexagonal architecture
 # libraries
 - go get -u github.com/gin-gonic/gin
 - go get go.mongodb.org/mongo-driver/mongo
